@@ -1,0 +1,16 @@
+# Docker build context — hou de image slank
+.git
+.gitignore
+.vscode
+.idea
+node_modules
+*.log
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+.env
+install.ps1
+install.sh
+_fix.py
+_apply.py

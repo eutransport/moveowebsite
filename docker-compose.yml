@@ -1,0 +1,25 @@
+# ============================================================
+# Moveo Transport B.V. — Docker Compose stack
+# Hangt aan het BESTAANDE proxy-netwerk zodat de reeds draaiende
+# Nginx Proxy Manager deze site kan bereiken.
+# ============================================================
+
+services:
+  moveo-web:
+    build: .
+    image: moveo-web:latest
+    container_name: moveo-web
+    restart: unless-stopped
+    expose:
+      - "80"                       # alleen intern bereikbaar (via NPM)
+    networks:
+      - proxy
+    labels:
+      - "com.moveo.role=web"
+
+networks:
+  proxy:
+    # Externe (reeds bestaande) NPM-netwerk.
+    # Overschrijfbaar via PROXY_NETWORK in .env (default: tms_external).
+    name: ${PROXY_NETWORK:-tms_external}
+    external: true
