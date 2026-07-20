@@ -831,6 +831,223 @@ section { position: relative; padding: clamp(4.5rem, 9vw, 8rem) 0; }
 .mt-12{ margin-top: 3rem; }
 .divider { height: 1px; background: var(--border); margin: 3rem 0; }
 
+/* ==========================================================
+   Light & blue-tint section variants
+   Alternating wit / donker ritme voor een lichtere pagina-feel
+   ========================================================== */
+
+.section-light      { background: #FFFFFF; position: relative; }
+.section-blue-tint  { background: #EEF4FF; position: relative; }
+
+/* Subtiele scheidingslijn tussen secties */
+.section-light::after,
+.section-blue-tint::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(30, 79, 216, 0.08);
+  pointer-events: none;
+}
+
+/* Basistekst op lichte achtergronden */
+.section-light,
+.section-blue-tint {
+  color: var(--brand-navy-900);
+}
+
+/* Eyebrow labels iets donkerder blauw (leesbaar op wit) */
+.section-light .eyebrow,
+.section-blue-tint .eyebrow {
+  color: var(--brand-blue-2);
+}
+
+/* Headings */
+.section-light .t-1,
+.section-light .t-2,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-blue-tint .t-1,
+.section-blue-tint .t-2,
+.section-blue-tint h2,
+.section-blue-tint h3,
+.section-blue-tint h4 {
+  color: var(--brand-navy-900);
+}
+
+/* Lead / paragrafen */
+.section-light .lead,
+.section-light p,
+.section-blue-tint .lead,
+.section-blue-tint p {
+  color: #4A5568;
+}
+
+/* Gradient blue in headings: cyan te licht op wit → donkerder blauw */
+.section-light .text-gradient-blue,
+.section-blue-tint .text-gradient-blue {
+  background: linear-gradient(120deg, #1E4FD8, #0A3FA8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Cards op lichte secties ---------- */
+.section-light .card {
+  background: #F4F7FF;
+  border-color: rgba(30, 79, 216, 0.10);
+  box-shadow: 0 2px 20px -4px rgba(0, 30, 100, 0.08), 0 1px 4px rgba(0,0,0,0.03);
+}
+.section-blue-tint .card {
+  background: #FFFFFF;
+  border-color: rgba(30, 79, 216, 0.10);
+  box-shadow: 0 2px 20px -4px rgba(0, 30, 100, 0.08), 0 1px 4px rgba(0,0,0,0.03);
+}
+.section-light .card:hover,
+.section-blue-tint .card:hover {
+  border-color: rgba(30, 79, 216, 0.28);
+  box-shadow: 0 10px 36px -8px rgba(30, 79, 216, 0.16);
+  transform: translateY(-6px);
+}
+/* Hover glow border: lichtere versie voor light-bg */
+.section-light .card:hover::before,
+.section-blue-tint .card:hover::before {
+  background: linear-gradient(135deg, rgba(30,79,216,0.28), transparent 40%, transparent 60%, rgba(56,189,248,0.22));
+  opacity: 1;
+}
+.section-light .card h3,
+.section-blue-tint .card h3 { color: var(--brand-navy-900); }
+.section-light .card p,
+.section-blue-tint .card p   { color: #4A5568; }
+
+/* Card icons: blauw tint i.p.v. cyan */
+.section-light .card-icon,
+.section-blue-tint .card-icon {
+  background: linear-gradient(135deg, rgba(30, 79, 216, 0.08), rgba(56, 189, 248, 0.08));
+  border-color: rgba(30, 79, 216, 0.15);
+  color: var(--brand-blue-2);
+}
+
+/* Link CTA in kaarten */
+.section-light .link-cta,
+.section-blue-tint .link-cta { color: var(--brand-blue-2); }
+.section-light .link-cta:hover,
+.section-blue-tint .link-cta:hover { color: var(--brand-blue); }
+
+/* ---------- Stats op lichte secties ---------- */
+.section-light .stat,
+.section-blue-tint .stat {
+  border-top-color: rgba(30, 79, 216, 0.15);
+}
+.section-light .stat-label,
+.section-blue-tint .stat-label { color: #4A5568; }
+
+/* ---------- Reviews op lichte secties ---------- */
+.section-light .review {
+  background: #F4F7FF;
+  border-color: rgba(30, 79, 216, 0.10);
+  box-shadow: 0 2px 20px -4px rgba(0, 30, 100, 0.07);
+}
+.section-light .review::before { color: rgba(30, 79, 216, 0.18); }
+.section-light .review p       { color: #374151; }
+.section-light .review .who    { color: #6B7280; }
+.section-light .review .who b  { color: var(--brand-navy-900); }
+
+/* ---------- Process steps op blue-tint sectie ---------- */
+.section-blue-tint .step {
+  background: #FFFFFF;
+  border-color: rgba(30, 79, 216, 0.10);
+  box-shadow: 0 2px 16px -4px rgba(0, 30, 100, 0.07);
+}
+.section-blue-tint .step h4 { color: var(--brand-navy-900); }
+.section-blue-tint .step p  { color: #4A5568; }
+
+/* ---------- Ghost button op lichte secties ---------- */
+.section-light .btn-ghost,
+.section-blue-tint .btn-ghost {
+  background: rgba(30, 79, 216, 0.06);
+  border-color: rgba(30, 79, 216, 0.22);
+  color: var(--brand-navy-900);
+  backdrop-filter: none;
+}
+.section-light .btn-ghost:hover,
+.section-blue-tint .btn-ghost:hover {
+  background: rgba(30, 79, 216, 0.12);
+  border-color: var(--brand-blue-2);
+  color: var(--brand-blue-2);
+}
+
+/* Formuliervelden op lichte achtergronden */
+.section-light .field input,
+.section-light .field select,
+.section-light .field textarea,
+.section-blue-tint .field input,
+.section-blue-tint .field select,
+.section-blue-tint .field textarea {
+  background: #FFFFFF;
+  border-color: rgba(30, 79, 216, 0.18);
+  color: var(--brand-navy-900);
+}
+.section-light .field select option,
+.section-blue-tint .field select option {
+  background: #FFFFFF;
+  color: var(--brand-navy-900);
+}
+.section-light .field input::placeholder,
+.section-light .field textarea::placeholder,
+.section-blue-tint .field input::placeholder,
+.section-blue-tint .field textarea::placeholder { color: #9CA3AF; }
+.section-light .field input:focus,
+.section-light .field select:focus,
+.section-light .field textarea:focus,
+.section-blue-tint .field input:focus,
+.section-blue-tint .field select:focus,
+.section-blue-tint .field textarea:focus {
+  border-color: var(--brand-blue-2);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(30, 79, 216, 0.12);
+}
+.section-light .field label,
+.section-blue-tint .field label { color: #374151; }
+.section-light .form-note,
+.section-blue-tint .form-note   { color: #6B7280; }
+
+/* Captcha op lichte achtergronden */
+.section-light .captcha,
+.section-blue-tint .captcha {
+  border-color: rgba(30, 79, 216, 0.12);
+  background: rgba(30, 79, 216, 0.03);
+}
+.section-light .captcha-check,
+.section-blue-tint .captcha-check { color: var(--brand-navy-900); }
+
+/* Inline color overrides — color:var(--white) en color:var(--brand-cyan) op light bg */
+.section-light [style*="var(--white)"],
+.section-blue-tint [style*="var(--white)"]       { color: var(--brand-navy-900) !important; }
+.section-light [style*="var(--brand-cyan)"],
+.section-blue-tint [style*="var(--brand-cyan)"]  { color: var(--brand-blue-2)   !important; }
+.section-light [style*="var(--text-dim)"],
+.section-blue-tint [style*="var(--text-dim)"]    { color: #4A5568               !important; }
+
+/* Vacature job-kaartjes op lichte achtergronden */
+.section-light .job,
+.section-blue-tint .job {
+  background: #FFFFFF;
+  border-color: rgba(30, 79, 216, 0.10);
+  box-shadow: 0 2px 16px -4px rgba(0, 30, 100, 0.07);
+}
+.section-light .job:hover,
+.section-blue-tint .job:hover { border-color: rgba(30, 79, 216, 0.28); }
+.section-light .job-title,
+.section-blue-tint .job-title { color: var(--brand-navy-900); }
+.section-light .tag,
+.section-blue-tint .tag {
+  background: rgba(30, 79, 216, 0.06);
+  color: var(--brand-blue-2);
+  border-color: rgba(30, 79, 216, 0.20);
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
