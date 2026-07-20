@@ -12,10 +12,10 @@
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
 
   /* ---------- Active nav link ---------- */
-  const path = location.pathname.split('/').pop() || 'index.html';
+  const currentPath = location.pathname.replace(/\/$/, '') || '/';
   $$('.nav-links a, .mobile-menu a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === path) a.classList.add('active');
+    const href = (a.getAttribute('href') || '').replace(/\/$/, '') || '/';
+    if (href === currentPath) a.classList.add('active');
   });
 
   /* ---------- Header scroll state ---------- */

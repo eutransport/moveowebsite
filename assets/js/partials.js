@@ -6,16 +6,16 @@
 
 (() => {
   const NAV = [
-    { href: 'index.html',     label: 'Home' },
-    { href: 'over-ons.html',  label: 'Over Ons' },
-    { href: 'diensten.html',  label: 'Diensten' },
-    { href: 'vacatures.html', label: 'Vacatures' },
-    { href: 'offerte.html',   label: 'Offerte' },
-    { href: 'contact.html',   label: 'Contact' },
+    { href: '/',            label: 'Home' },
+    { href: '/over-ons',    label: 'Over Ons' },
+    { href: '/diensten',    label: 'Diensten' },
+    { href: '/vacatures',   label: 'Vacatures' },
+    { href: '/offerte',     label: 'Offerte' },
+    { href: '/contact',     label: 'Contact' },
   ];
 
   const brand = `
-    <a href="index.html" class="brand" aria-label="Moveo Transport home">
+    <a href="/" class="brand" aria-label="Moveo Transport home">
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-text">Moveo<span>.</span></span>
     </a>`;
@@ -27,7 +27,7 @@
       <div class="container-x nav-inner">
         ${brand}
         <nav class="nav-links" aria-label="Hoofdnavigatie">${navLinks}</nav>
-        <a class="btn btn-primary btn-sm nav-cta" href="offerte.html">
+        <a class="btn btn-primary btn-sm nav-cta" href="/offerte">
           <span>Offerte aanvragen
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
@@ -37,7 +37,7 @@
     </header>
     <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu">
       ${NAV.map(n => `<a href="${n.href}">${n.label}</a>`).join('')}
-      <a class="btn btn-primary" href="offerte.html" style="margin-top:1rem"><span>Offerte aanvragen</span></a>
+      <a class="btn btn-primary" href="/offerte" style="margin-top:1rem"><span>Offerte aanvragen</span></a>
     </div>`;
 
   const footer = `
@@ -62,11 +62,11 @@
           </div>
           <div class="footer-col">
             <h4>Diensten</h4>
-            <a href="diensten.html#nationaal">Nationaal Transport</a>
-            <a href="diensten.html#internationaal">Internationaal Transport</a>
-            <a href="diensten.html#spoed">Spoedtransport</a>
-            <a href="diensten.html#distributie">Distributie</a>
-            <a href="diensten.html#logistiek">Logistieke Oplossingen</a>
+            <a href="/diensten#nationaal">Nationaal Transport</a>
+            <a href="/diensten#internationaal">Internationaal Transport</a>
+            <a href="/diensten#spoed">Spoedtransport</a>
+            <a href="/diensten#distributie">Distributie</a>
+            <a href="/diensten#logistiek">Logistieke Oplossingen</a>
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
