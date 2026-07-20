@@ -935,13 +935,22 @@ section { position: relative; padding: clamp(4.5rem, 9vw, 8rem) 0; }
 .section-light .link-cta:hover,
 .section-blue-tint .link-cta:hover { color: var(--brand-blue); }
 
-/* ---------- Stats op lichte secties ---------- */
+/* Stats op lichte secties */
 .section-light .stat,
 .section-blue-tint .stat {
   border-top-color: rgba(30, 79, 216, 0.15);
 }
 .section-light .stat-label,
 .section-blue-tint .stat-label { color: #4A5568; }
+
+/* Stat-nummers: donkere gradient zodat ze leesbaar zijn op wit */
+.section-light .stat-num,
+.section-blue-tint .stat-num {
+  background: linear-gradient(120deg, var(--brand-navy-900), var(--brand-blue-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 /* ---------- Reviews op lichte secties ---------- */
 .section-light .review {
