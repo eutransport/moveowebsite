@@ -995,8 +995,9 @@ section { position: relative; padding: clamp(4.5rem, 9vw, 8rem) 0; }
 .section-blue-tint .field select,
 .section-blue-tint .field textarea {
   background: #FFFFFF;
-  border-color: rgba(30, 79, 216, 0.18);
+  border-color: #AABBD4;
   color: var(--brand-navy-900);
+  box-shadow: 0 1px 3px rgba(0, 30, 80, 0.06);
 }
 .section-light .field select option,
 .section-blue-tint .field select option {
@@ -1006,7 +1007,7 @@ section { position: relative; padding: clamp(4.5rem, 9vw, 8rem) 0; }
 .section-light .field input::placeholder,
 .section-light .field textarea::placeholder,
 .section-blue-tint .field input::placeholder,
-.section-blue-tint .field textarea::placeholder { color: #9CA3AF; }
+.section-blue-tint .field textarea::placeholder { color: #9CAABF; }
 .section-light .field input:focus,
 .section-light .field select:focus,
 .section-light .field textarea:focus,
@@ -1025,11 +1026,20 @@ section { position: relative; padding: clamp(4.5rem, 9vw, 8rem) 0; }
 /* Captcha op lichte achtergronden */
 .section-light .captcha,
 .section-blue-tint .captcha {
-  border-color: rgba(30, 79, 216, 0.12);
-  background: rgba(30, 79, 216, 0.03);
+  border-color: #AABBD4;
+  background: rgba(30, 79, 216, 0.04);
 }
 .section-light .captcha-check,
 .section-blue-tint .captcha-check { color: var(--brand-navy-900); }
+
+/* Captcha rekensom-cijfers — base CSS heeft color:var(--white), hier overschrijven */
+.section-light .captcha-sum label,
+.section-blue-tint .captcha-sum label { color: #374151; }
+.section-light .captcha-sum label b,
+.section-blue-tint .captcha-sum label b {
+  color: var(--brand-navy-900);
+  font-weight: 700;
+}
 
 /* Inline color overrides — color:var(--white) en color:var(--brand-cyan) op light bg */
 .section-light [style*="var(--white)"],
