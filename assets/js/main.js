@@ -97,13 +97,38 @@
   };
 
   /* ---------- Reveal on scroll (IntersectionObserver + optional GSAP) ---------- */
+  // Auto-taggen: elke sectie (behalve hero) + belangrijke content-blokken krijgen .reveal
+  // zodat ALLES bij scrollen soepel van onderaf infaded.
+  const autoRevealSelectors = [
+    'main > section:not(#home) > .container-x > *',
+    'main > section:not(#home) .grid-3 > *',
+    'main > section:not(#home) .grid-2 > *',
+    'main > section:not(#home) .card',
+    'main > section:not(#home) .review',
+    'main > section:not(#home) .job',
+    'main > section:not(#home) .step',
+    'main > section:not(#home) .stats > *',
+    'main > section:not(#home) .timeline > *',
+  ];
+  autoRevealSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach((el, idx) => {
+      if (el.classList.contains('reveal')) return;
+      if (el.closest('[data-anim]')) return; // laat GSAP-groepen met rust
+      el.classList.add('reveal');
+      // Stagger: subtiele vertraging per opeenvolgend element in dezelfde parent
+      if (el.parentElement && (el.parentElement.matches('.grid-3, .grid-2, .stats, .timeline'))) {
+        el.style.transitionDelay = (Math.min(idx, 6) * 90) + 'ms';
+      }
+    });
+  });
+
   const reveals = $$('.reveal');
   if (reveals.length) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
     reveals.forEach(el => io.observe(el));
   }
 

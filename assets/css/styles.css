@@ -816,8 +816,11 @@ section { position: relative; padding: clamp(4.5rem, 9vw, 8rem) 0; }
 }
 
 /* ---------- Reveal animation base ---------- */
-.reveal { opacity: 0; transform: translateY(28px); }
-.reveal.in { opacity: 1; transform: none; transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+.reveal { opacity: 0; transform: translateY(36px); will-change: opacity, transform; }
+.reveal.in { opacity: 1; transform: none; transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
+}
 
 /* ---------- Utility ---------- */
 .text-center { text-align: center; }
