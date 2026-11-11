@@ -84,15 +84,15 @@
   const drawGlobe = (rot) => {
     // Outer glow
     const grad = ctx.createRadialGradient(cx, cy, R * 0.6, cx, cy, R * 1.6);
-    grad.addColorStop(0, 'rgba(30,79,216,0.22)');
-    grad.addColorStop(1, 'rgba(30,79,216,0)');
+    grad.addColorStop(0, 'rgba(47,181,211,0.22)');
+    grad.addColorStop(1, 'rgba(47,181,211,0)');
     ctx.fillStyle = grad;
     ctx.beginPath(); ctx.arc(cx, cy, R * 1.6, 0, Math.PI * 2); ctx.fill();
 
     // Fill sphere subtly
     const inner = ctx.createRadialGradient(cx - R*0.25, cy - R*0.3, R*0.05, cx, cy, R);
-    inner.addColorStop(0, 'rgba(56,189,248,0.10)');
-    inner.addColorStop(1, 'rgba(5,11,31,0.0)');
+    inner.addColorStop(0, 'rgba(123,223,242,0.10)');
+    inner.addColorStop(1, 'rgba(33,35,46,0.0)');
     ctx.fillStyle = inner;
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
 
@@ -103,7 +103,7 @@
       for (let j = 0; j <= 64; j++) {
         const p = project(lat, (Math.PI * 2 * j) / 64, rot);
         const alpha = Math.max(0, (p.z + 1) / 2) * 0.35 + 0.05;
-        ctx.strokeStyle = `rgba(125,211,252,${alpha})`;
+        ctx.strokeStyle = `rgba(180,238,248,${alpha})`;
         if (j === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
       }
       ctx.stroke();
@@ -116,7 +116,7 @@
         const lat = -Math.PI/2 + (Math.PI * i) / 64;
         const p = project(lat, lon, rot);
         const alpha = Math.max(0, (p.z + 1) / 2) * 0.28 + 0.04;
-        ctx.strokeStyle = `rgba(125,211,252,${alpha})`;
+        ctx.strokeStyle = `rgba(180,238,248,${alpha})`;
         if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
       }
       ctx.stroke();
@@ -127,7 +127,7 @@
     for (let j = 0; j <= 128; j++) {
       const p = project(0, (Math.PI * 2 * j) / 128, rot);
       const alpha = Math.max(0, (p.z + 1) / 2) * 0.6;
-      ctx.strokeStyle = `rgba(56,189,248,${alpha})`;
+      ctx.strokeStyle = `rgba(123,223,242,${alpha})`;
       if (j === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
     }
     ctx.stroke();
@@ -141,11 +141,11 @@
       const pulse = 0.5 + 0.5 * Math.sin(t * 2 + h.pulse);
       const r = 1.4 + front * 1.4;
       ctx.beginPath();
-      ctx.fillStyle = `rgba(125,211,252,${0.5 + front * 0.5})`;
+      ctx.fillStyle = `rgba(180,238,248,${0.5 + front * 0.5})`;
       ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill();
 
       ctx.beginPath();
-      ctx.strokeStyle = `rgba(56,189,248,${0.25 * front * pulse})`;
+      ctx.strokeStyle = `rgba(123,223,242,${0.25 * front * pulse})`;
       ctx.lineWidth = 1;
       ctx.arc(p.x, p.y, r + 4 + pulse * 3, 0, Math.PI * 2); ctx.stroke();
     });
@@ -184,9 +184,9 @@
         if (s === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
       const grad = ctx.createLinearGradient(pa.x, pa.y, pb.x, pb.y);
-      grad.addColorStop(0, 'rgba(56,189,248,0.0)');
-      grad.addColorStop(0.5, 'rgba(56,189,248,0.9)');
-      grad.addColorStop(1, 'rgba(30,79,216,0.0)');
+      grad.addColorStop(0, 'rgba(123,223,242,0.0)');
+      grad.addColorStop(0.5, 'rgba(123,223,242,0.9)');
+      grad.addColorStop(1, 'rgba(47,181,211,0.0)');
       ctx.strokeStyle = grad;
       ctx.stroke();
 
@@ -196,10 +196,10 @@
         const x = (1-u)*(1-u)*pa.x + 2*(1-u)*u*cxA + u*u*pb.x;
         const y = (1-u)*(1-u)*pa.y + 2*(1-u)*u*cyA + u*u*pb.y;
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(125,211,252,0.95)';
+        ctx.fillStyle = 'rgba(180,238,248,0.95)';
         ctx.arc(x, y, 2.4, 0, Math.PI * 2); ctx.fill();
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(56,189,248,0.25)';
+        ctx.fillStyle = 'rgba(123,223,242,0.25)';
         ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
       }
     }
@@ -219,9 +219,9 @@
     for (let i = 0; i < 3; i++) {
       const yy = ((now * (30 + i*20)) % (H + 200)) - 100;
       const grd = ctx.createLinearGradient(0, yy, W, yy);
-      grd.addColorStop(0, 'rgba(56,189,248,0)');
-      grd.addColorStop(0.5, `rgba(56,189,248,${0.06 + i*0.03})`);
-      grd.addColorStop(1, 'rgba(56,189,248,0)');
+      grd.addColorStop(0, 'rgba(123,223,242,0)');
+      grd.addColorStop(0.5, `rgba(123,223,242,${0.06 + i*0.03})`);
+      grd.addColorStop(1, 'rgba(123,223,242,0)');
       ctx.fillStyle = grd;
       ctx.fillRect(0, yy, W, 1);
     }

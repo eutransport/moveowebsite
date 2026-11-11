@@ -152,19 +152,37 @@
       });
     });
 
-    // Counter animation
-    $$('[data-count]').forEach(el => {
-      const end = parseFloat(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const decimals = (String(end).split('.')[1] || '').length;
-      const obj = { v: 0 };
-      gsap.to(obj, {
-        v: end, duration: 2, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%' },
-        onUpdate: () => { el.textContent = obj.v.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + suffix; }
-      });
-    });
   };
+
+/* ---------- Counters (independent of GSAP) ---------- */
+  (() => {
+    const els = $$('[data-count]');
+    if (!els.length) return;
+    const fmt = (v, d) => v.toLocaleString('nl-NL', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const render = (el, v) => {
+      const d = (el.dataset.count.split('.')[1] || '').length;
+      el.textContent = (el.dataset.prefix || '') + fmt(v, d) + (el.dataset.suffix || '');
+    };
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const run = el => {
+      const end = parseFloat(el.dataset.count);
+      if (reduce) return render(el, end);
+      const dur = 2200, t0 = performance.now();
+      const tick = now => {
+        const p = Math.min((now - t0) / dur, 1);
+        render(el, end * (1 - Math.pow(1 - p, 4)));
+        if (p < 1) requestAnimationFrame(tick);
+        else { render(el, end); el.closest('.stat') && el.closest('.stat').classList.add('is-done'); }
+      };
+      requestAnimationFrame(tick);
+    };
+    els.forEach(el => render(el, 0));
+    if (!('IntersectionObserver' in window)) return els.forEach(run);
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { io.unobserve(e.target); run(e.target); }
+    }), { threshold: 0.4 });
+    els.forEach(el => io.observe(el));
+  })();
 
   /* ---------- Web3Forms integration ----------
      Set your access key once via <meta name="web3forms-key" content="YOUR-KEY">
